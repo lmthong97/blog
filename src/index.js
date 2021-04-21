@@ -6,6 +6,10 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 
 const route = require('./routes');
+const db = require('./config/db')
+
+// Connect to DB
+db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 //http logger
@@ -25,5 +29,5 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`App listening at http://localhost:${port}`);
 });
