@@ -5,6 +5,8 @@ const port = 3001
 const morgan = require('morgan')
 const handlebars  = require('express-handlebars')
 
+const route = require('./routes')
+
 
 app.use(express.static( path.join(__dirname, 'public')))
 //http logger
@@ -17,14 +19,9 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
-app.get('/', function (req, res) {
-  res.render('home');
-});
+// Route init
+route(app);
 
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
