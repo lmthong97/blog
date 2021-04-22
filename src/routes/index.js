@@ -1,11 +1,21 @@
+
+const express = require('express');
 const newsRouter = require('./news');
 const siteRouter = require('./site');
+const meRouter = require('./me');
+
 const coursesRouter = require('./courses');
 
 
+
+
+
 function route(app) {
+    
+    
     app.use('/news', newsRouter);
     app.use('/courses', coursesRouter);
+    app.use('/me', meRouter);
 
 
     app.use('/', siteRouter);
@@ -22,9 +32,7 @@ function route(app) {
     //     res.render('search');
     //   });
 
-    app.post('/search', function (req, res) {
-        res.send('');
-    });
+    
 
     // app.get('/', (req, res) => {
     //   res.send('Hello World!')
